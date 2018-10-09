@@ -183,8 +183,7 @@ class MqttFan(MqttAvailability, MqttDiscoveryUpdate, MqttEntityDeviceInfo,
 
     async def async_added_to_hass(self):
         """Subscribe to MQTT events."""
-        await MqttAvailability.async_added_to_hass(self)
-        await MqttDiscoveryUpdate.async_added_to_hass(self)
+        await super().async_added_to_hass()
 
         templates = {}
         for key, tpl in list(self._templates.items()):

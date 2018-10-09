@@ -61,7 +61,8 @@ class TestSwitchMQTT(unittest.TestCase):
         """Test the sending MQTT commands in optimistic mode."""
         fake_state = ha.State('switch.test', 'on')
 
-        with patch('homeassistant.components.switch.mqtt.async_get_last_state',
+        with patch('homeassistant.helpers.restore_state.RestoreEntity'
+                   '.async_get_last_state',
                    return_value=mock_coro(fake_state)):
             assert setup_component(self.hass, switch.DOMAIN, {
                 switch.DOMAIN: {

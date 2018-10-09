@@ -112,8 +112,7 @@ class MqttAlarm(MqttAvailability, MqttDiscoveryUpdate,
 
     async def async_added_to_hass(self):
         """Subscribe mqtt events."""
-        await MqttAvailability.async_added_to_hass(self)
-        await MqttDiscoveryUpdate.async_added_to_hass(self)
+        await super().async_added_to_hass()
 
         @callback
         def message_received(topic, payload, qos):

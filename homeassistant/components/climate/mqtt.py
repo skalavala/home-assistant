@@ -269,8 +269,7 @@ class MqttClimate(MqttAvailability, MqttDiscoveryUpdate, ClimateDevice):
 
     async def async_added_to_hass(self):
         """Handle being added to home assistant."""
-        await MqttAvailability.async_added_to_hass(self)
-        await MqttDiscoveryUpdate.async_added_to_hass(self)
+        await super().async_added_to_hass()
 
         @callback
         def handle_current_temp_received(topic, payload, qos):
